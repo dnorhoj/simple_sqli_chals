@@ -1,0 +1,22 @@
+services:
+  app:
+    build: .
+    working_dir: /var/www/
+    volumes:
+      - ./source:/var/www
+  db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/1-init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: y5WL79651SeP9jxZDesVOAmZaEuEl6bI
+      MYSQL_DATABASE: sqlchal
+  nginx:
+    image: nginx:alpine
+    ports:
+      - 8080:80
+    volumes:
+      - ./source:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
