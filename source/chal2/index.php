@@ -26,8 +26,8 @@
         $username = $_POST["username"];
         $password = $_POST["password"];
 
-        $conn = DB::conn("chal1");
-        $query = "SELECT * FROM chal1 WHERE username = '$username' AND password = '$password'";
+        $conn = DB::conn("chal2");
+        $query = "SELECT * FROM chal2 WHERE username = '$username' AND password = '$password'";
         echo "SQL Query: <code>" . htmlspecialchars($query) . "</code><br>";
 
         try {
